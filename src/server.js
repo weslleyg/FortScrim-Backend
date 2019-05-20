@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
-mongoose.connect('mongodb+srv://weslley:q1w2e3r4t5@teste-pfeej.mongodb.net/test?retryWrites=true', {
+mongoose.connect('INSIRA SUA URL', {
 	useNewUrlParser: true,
 	useCreateIndex: true
 });
