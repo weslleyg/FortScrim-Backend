@@ -14,12 +14,12 @@ class UserController {
 			const user = await User.create({ ...req.body, roles: [ 'user' ] });
 
 			user.password = undefined;
-			
+
 			await req.io.emit('users', user);
 
 			return res.json({
 				user,
-				token: generateToken({ id: user.id, roles: user.roles, username: user.username })
+				token: generateToken({ id: user.id, roles: user.roles })
 			});
 		} catch (err) {
 			return res.status(400).send({ error: 'Erro ao cadastrar' });

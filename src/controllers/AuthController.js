@@ -16,13 +16,14 @@ class AuthController {
 
 		if (!user) return res.status(400).send({ error: 'Email invalido' });
 
-		if (!await bcrypt.compare(password, user.password)) return res.status(400).send({ error: 'Senha invalida' });
+		if (!await bcrypt.compareSync(password, user.password))
+			return res.status(400).send({ error: 'Senha invalida' });
 
 		user.password = undefined;
 
 		res.send({
 			user,
-			token: generateToken({ id: user.id, roles: user.roles, username: user.username })
+			token: generateToken({ id: user.id, roles: user.roles })
 		});
 	}
 }

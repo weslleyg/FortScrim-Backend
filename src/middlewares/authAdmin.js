@@ -22,8 +22,6 @@ module.exports = (req, res, next) => {
 		} else {
 			if (decoded.roles.includes('admin')) {
 				req.userId = decoded.id;
-				req.userName = decoded.username;
-				req.roles = decoded.roles;
 				return next();
 			} else {
 				res.status(403).json({
